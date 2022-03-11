@@ -1,17 +1,16 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
 class StuffItemAdmin extends React.Component {
   render() {
     return (
-      <Table.Row>
-        <Table.Cell>{this.props.stuff.name}</Table.Cell>
-        <Table.Cell>{this.props.stuff.quantity}</Table.Cell>
-        <Table.Cell>{this.props.stuff.condition}</Table.Cell>
-        <Table.Cell>{this.props.stuff.owner}</Table.Cell>
-      </Table.Row>
+      <tr>
+        <td>{this.props.stuff.name}</td>
+        <td>{this.props.stuff.quantity}</td>
+        <td>{this.props.stuff.condition}</td>
+        <td>{this.props.stuff.owner}</td>
+      </tr>
     );
   }
 }

@@ -1,12 +1,16 @@
 import React from 'react';
-import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Stuffs } from '../../api/stuff/Stuff';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
@@ -23,27 +27,31 @@ class EditStuff extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">Edit Stuff</Header>
-          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-            <Segment>
-              <TextField name='name'/>
-              <NumField name='quantity' decimal={false}/>
-              <SelectField name='condition'/>
-              <SubmitField value='Submit'/>
-              <ErrorsField/>
-              <HiddenField name='owner' />
-            </Segment>
-          </AutoForm>
-        </Grid.Column>
-      </Grid>
+      <Container>
+        <Row>
+          <Col>
+            <Col className="text-center"><h2>Edit Stuff</h2></Col>
+            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+              <Card>
+                <Card.Body>
+                  <TextField name='name'/>
+                  <NumField name='quantity' decimal={false}/>
+                  <SelectField name='condition'/>
+                  <SubmitField value='Submit'/>
+                  <ErrorsField/>
+                  <HiddenField name='owner'/>
+                </Card.Body>
+              </Card>
+            </AutoForm>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

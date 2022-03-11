@@ -1,36 +1,39 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Table, Header, Loader } from 'semantic-ui-react';
+import Table from 'react-bootstrap/Table';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItemAdmin from '../components/StuffItemAdmin';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListStuffAdmin extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
+    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
   }
 
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
       <Container>
-        <Header as="h2" textAlign="center">List Stuff (Admin)</Header>
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Quantity</Table.HeaderCell>
-              <Table.HeaderCell>Condition</Table.HeaderCell>
-              <Table.HeaderCell>Owner</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
+        <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Condition</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody>
             {this.props.stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
-          </Table.Body>
+          </tbody>
         </Table>
       </Container>
     );

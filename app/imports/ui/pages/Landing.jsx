@@ -1,22 +1,26 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
   render() {
     return (
-      <Grid id='landing-page' verticalAlign='middle' textAlign='center' container>
+      <Container>
+        <Row id='landing-page' className="align-middle text-center">
+          <Col xs={4}>
+            <Image roundedCircle src="/images/meteor-logo.png" width="150px"/>
+          </Col>
 
-        <Grid.Column width={4}>
-          <Image size='small' circular src="/images/meteor-logo.png"/>
-        </Grid.Column>
+          <Col xs={8} className="d-flex flex-column justify-content-center">
+            <h1>Welcome to this template</h1>
+            <p>Now get to work and modify this app!</p>
+          </Col>
 
-        <Grid.Column width={8}>
-          <h1>Welcome to this template</h1>
-          <p>Now get to work and modify this app!</p>
-        </Grid.Column>
-
-      </Grid>
+        </Row>
+      </Container>
     );
   }
 }
