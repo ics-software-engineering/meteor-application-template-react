@@ -9,36 +9,25 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuffAdmin extends React.Component {
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
-  }
-
-  // Render the page once subscriptions have been received.
-  renderPage() {
-    return (
-      <Container>
-        <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Condition</th>
-              <th>Owner</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
-          </tbody>
-        </Table>
-      </Container>
-    );
-  }
-}
+/* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
+const ListStuffAdmin = ({ stuffs, ready }) => (ready ? (
+  <Container>
+    <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Condition</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff}/>)}
+      </tbody>
+    </Table>
+  </Container>
+) : <LoadingSpinner/>);
 
 // Require an array of Stuff documents in the props.
 ListStuffAdmin.propTypes = {

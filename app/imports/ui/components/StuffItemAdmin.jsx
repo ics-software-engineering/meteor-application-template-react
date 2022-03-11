@@ -2,18 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /** Renders a single row in the List Stuff (Admin) table. See pages/ListStuffAdmin.jsx. */
-class StuffItemAdmin extends React.Component {
-  render() {
-    return (
-      <tr>
-        <td>{this.props.stuff.name}</td>
-        <td>{this.props.stuff.quantity}</td>
-        <td>{this.props.stuff.condition}</td>
-        <td>{this.props.stuff.owner}</td>
-      </tr>
-    );
-  }
-}
+const StuffItemAdmin = ({ stuff }) => (
+  <tr>
+    <td>{stuff.name}</td>
+    <td>{stuff.quantity}</td>
+    <td>{stuff.condition}</td>
+    <td>{stuff.owner}</td>
+  </tr>
+);
 
 // Require a document to be passed to this component.
 StuffItemAdmin.propTypes = {

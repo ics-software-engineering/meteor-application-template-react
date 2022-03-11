@@ -10,41 +10,29 @@ import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItem from '../components/StuffItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListStuff extends React.Component {
-
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
-  }
-
-  // Render the page once subscriptions have been received.
-  renderPage() {
-    return (
-      <Container>
-        <Row className="justify-content-center">
-          <Col md={7}>
-            <Col className="text-center">
-              <h2>List Stuff</h2>
-            </Col>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Quantity</th>
-                  <th>Condition</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff}/>)}
-              </tbody>
-            </Table></Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+/* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
+const ListStuff = ({ stuffs, ready }) => (ready ? (
+  <Container>
+    <Row className="justify-content-center">
+      <Col md={7}>
+        <Col className="text-center">
+          <h2>List Stuff</h2>
+        </Col>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Condition</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff}/>)}
+          </tbody>
+        </Table></Col>
+    </Row>
+  </Container>) : <LoadingSpinner/>);
 
 // Require an array of Stuff documents in the props.
 ListStuff.propTypes = {

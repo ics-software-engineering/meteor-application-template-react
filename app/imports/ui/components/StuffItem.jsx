@@ -3,20 +3,16 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class StuffItem extends React.Component {
-  render() {
-    return (
-      <tr>
-        <td>{this.props.stuff.name}</td>
-        <td>{this.props.stuff.quantity}</td>
-        <td>{this.props.stuff.condition}</td>
-        <td>
-          <Link to={`/edit/${this.props.stuff._id}`}>Edit</Link>
-        </td>
-      </tr>
-    );
-  }
-}
+const StuffItem = ({ stuff }) => (
+  <tr>
+    <td>{stuff.name}</td>
+    <td>{stuff.quantity}</td>
+    <td>{stuff.condition}</td>
+    <td>
+      <Link to={`/edit/${stuff._id}`}>Edit</Link>
+    </td>
+  </tr>
+);
 
 // Require a document to be passed to this component.
 StuffItem.propTypes = {

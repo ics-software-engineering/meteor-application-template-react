@@ -1,105 +1,94 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Form } from 'semantic-ui-react';
 import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
  * Authentication errors modify the component’s state to be displayed
  */
-export default class Signin extends React.Component {
-
-  // Initialize component state with properties for login and redirection.
-  constructor(props) {
-    super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
-  }
+const Signin = ({ location }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [redirectToReferer, setRedirectToRef] = useState(false);
 
   // Update the form controls each time the user interacts with them.
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
-  }
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
   // Handle Signin submission using Meteor's account mechanism.
-  submit = () => {
-    const { email, password } = this.state;
+  const submit = () => {
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
-        this.setState({ error: err.reason });
+        setError(err.reason);
       } else {
-        this.setState({ error: '', redirectToReferer: true });
+        setError('');
+        setRedirectToRef(true);
       }
     });
-  }
+  };
 
   // Render the signin form.
-  render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    // if correct authentication, redirect to page instead of login screen
-    if (this.state.redirectToReferer) {
-      return <Redirect to={from}/>;
-    }
-    // Otherwise return the Login form.
-    return (
-      <Container id="signin-page">
-        <Row className="justify-content-center">
-          <Col xs={5}>
-            <Col className="text-center">
-              <h2 textAlign="center">
-                Login to your account
-              </h2>
-            </Col>
-            <Form onSubmit={this.submit}>
-              <Card>
-                <Card.Body>
-                  <Form.Input
-                    label="Email"
-                    id="signin-form-email"
-                    icon="user"
-                    iconPosition="left"
-                    name="email"
-                    type="email"
-                    placeholder="E-mail address"
-                    onChange={this.handleChange}
-                  />
-                  <Form.Input
-                    label="Password"
-                    id="signin-form-password"
-                    icon="lock"
-                    iconPosition="left"
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    onChange={this.handleChange}
-                  />
-                  <Form.Button id="signin-form-submit" content="Submit"/>
-                </Card.Body>
-              </Card>
-            </Form>
-            <Alert variant="secondary">
-              <Link to="/signup">Click here to Register</Link>
-            </Alert>
-            {this.state.error === '' ? (
-              ''
-            ) : (
-              <Alert variant="danger">
-                <Alert.Heading>Login was not successful</Alert.Heading>
-                {this.state.error}
-              </Alert>
-            )}
-          </Col></Row>
-      </Container>
-    );
+  const { from } = location.state || { from: { pathname: '/' } };
+  // if correct authentication, redirect to page instead of login screen
+  if (redirectToReferer) {
+    return <Redirect to={from}/>;
   }
-}
+  // Otherwise return the Login form.
+  return (
+    <Container id="signin-page">
+      <Row className="justify-content-center">
+        <Col xs={5}>
+          <Col className="text-center">
+            <h2>Login to your account</h2>
+          </Col>
+          <Form onSubmit={submit}>
+            <Card>
+              <Card.Body>
+                <Form.Group className="mb-3">
+                  <Form.Label><strong>Email address</strong></Form.Label>
+                  <Form.Control id="signin-form-email" type="email" placeholder="E-mail address" onChange={handleChangeEmail}/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label><strong>Password</strong></Form.Label>
+                  <Form.Control id="signin-form-password" type="password" placeholder="Password" onChange={handleChangePassword}/>
+                </Form.Group>
+                <Button id="signin-form-submit" variant="secondary" type="submit">Submit</Button>
+              </Card.Body>
+            </Card>
+          </Form>
+          <Alert variant="secondary">
+            <Link to="/signup">Click here to Register</Link>
+          </Alert>
+          {error === '' ? (
+            ''
+          ) : (
+            <Alert variant="danger">
+              <Alert.Heading>Login was not successful</Alert.Heading>
+              {error}
+            </Alert>
+          )}
+        </Col></Row>
+    </Container>
+  );
+};
 
 // Ensure that the React Router location object is available in case we need to redirect.
 Signin.propTypes = {
   location: PropTypes.object,
 };
+
+export default Signin;

@@ -14,52 +14,43 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 const bridge = new SimpleSchema2Bridge(Stuffs.schema);
 
-/** Renders the Page for editing a single document. */
-class EditStuff extends React.Component {
+/* Renders the EditStuff page for editing a single document. */
+const EditStuff = ({ doc, ready }) => {
 
   // On successful submit, insert the data.
-  submit(data) {
+  const submit = (data) => {
     const { name, quantity, condition, _id } = data;
     Stuffs.collection.update(_id, { $set: { name, quantity, condition } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
-  }
+  };
 
-  // If the subscription(s) have been received, render the page, otherwise show a loading icon.
-  render() {
-    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
-  }
-
-  // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  renderPage() {
-    return (
-      <Container>
-        <Row className="justify-content-center">
-          <Col xs={5}>
-            <Col className="text-center"><h2>Edit Stuff</h2></Col>
-            <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
-              <Card>
-                <Card.Body>
-                  <TextField name='name'/>
-                  <NumField name='quantity' decimal={false}/>
-                  <SelectField name='condition'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                  <HiddenField name='owner'/>
-                </Card.Body>
-              </Card>
-            </AutoForm>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+  return ready ? (
+    <Container>
+      <Row className="justify-content-center">
+        <Col xs={5}>
+          <Col className="text-center"><h2>Edit Stuff</h2></Col>
+          <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
+            <Card>
+              <Card.Body>
+                <TextField name='name'/>
+                <NumField name='quantity' decimal={null}/>
+                <SelectField name='condition'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+                <HiddenField name='owner'/>
+              </Card.Body>
+            </Card>
+          </AutoForm>
+        </Col>
+      </Row>
+    </Container>
+  ) : <LoadingSpinner/>;
+};
 
 // Require the presence of a Stuff document in the props object. Uniforms adds 'model' to the props, which we use.
 EditStuff.propTypes = {
   doc: PropTypes.object,
-  model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
 

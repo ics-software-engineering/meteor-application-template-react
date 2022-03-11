@@ -23,11 +23,11 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/** Renders the Page for adding a document. */
-class AddStuff extends React.Component {
+/* Renders the AddStuff page for adding a document. */
+const AddStuff = () => {
 
   // On submit, insert the data.
-  submit(data, formRef) {
+  const submit = (data, formRef) => {
     const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
     Stuffs.collection.insert({ name, quantity, condition, owner },
@@ -39,31 +39,29 @@ class AddStuff extends React.Component {
           formRef.reset();
         }
       });
-  }
+  };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
-  render() {
-    let fRef = null;
-    return (
-      <Container>
-        <Row className="justify-content-center">
-          <Col xs={5}>
-            <Col className="text-center"><h2>Add Stuff</h2></Col>
-            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
-              <Card>
-                <Card.Body>
-                  <TextField name='name'/>
-                  <NumField name='quantity' decimal={null}/>
-                  <SelectField name='condition'/>
-                  <SubmitField value='Submit'/>
-                  <ErrorsField/>
-                </Card.Body>
-              </Card>
-            </AutoForm>
-          </Col>
-        </Row></Container>
-    );
-  }
-}
+  let fRef = null;
+  return (
+    <Container>
+      <Row className="justify-content-center">
+        <Col xs={5}>
+          <Col className="text-center"><h2>Add Stuff</h2></Col>
+          <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+            <Card>
+              <Card.Body>
+                <TextField name='name'/>
+                <NumField name='quantity' decimal={null}/>
+                <SelectField name='condition'/>
+                <SubmitField value='Submit'/>
+                <ErrorsField/>
+              </Card.Body>
+            </Card>
+          </AutoForm>
+        </Col>
+      </Row></Container>
+  );
+};
 
 export default AddStuff;
