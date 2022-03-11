@@ -34,8 +34,8 @@ class EditStuff extends React.Component {
   renderPage() {
     return (
       <Container>
-        <Row>
-          <Col>
+        <Row className="justify-content-center">
+          <Col xs={5}>
             <Col className="text-center"><h2>Edit Stuff</h2></Col>
             <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
               <Card>

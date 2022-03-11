@@ -2,6 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -14,27 +15,32 @@ class ListStuff extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
-    return (this.props.ready) ? this.renderPage() : <LoadingSpinner />;
+    return (this.props.ready) ? this.renderPage() : <LoadingSpinner/>;
   }
 
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
       <Container>
-        <Col className="text-center"><h2>List Stuff</h2></Col>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Condition</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
-          </tbody>
-        </Table>
+        <Row className="justify-content-center">
+          <Col md={7}>
+            <Col className="text-center">
+              <h2>List Stuff</h2>
+            </Col>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Condition</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff}/>)}
+              </tbody>
+            </Table></Col>
+        </Row>
       </Container>
     );
   }
