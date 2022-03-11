@@ -12,20 +12,21 @@ import LoadingSpinner from '../components/LoadingSpinner';
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListStuffAdmin = ({ stuffs, ready }) => (ready ? (
   <Container>
-    <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Condition</th>
-          <th>Owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff}/>)}
-      </tbody>
-    </Table>
+    <Col md={7}>
+      <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Condition</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff}/>)}
+        </tbody>
+      </Table></Col>
   </Container>
 ) : <LoadingSpinner/>);
 
