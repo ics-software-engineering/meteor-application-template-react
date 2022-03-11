@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { Stuffs } from '../../api/stuff/Stuff';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -12,21 +13,24 @@ import LoadingSpinner from '../components/LoadingSpinner';
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListStuffAdmin = ({ stuffs, ready }) => (ready ? (
   <Container>
-    <Col md={7}>
-      <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Condition</th>
-            <th>Owner</th>
-          </tr>
-        </thead>
-        <tbody>
-          {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff}/>)}
-        </tbody>
-      </Table></Col>
+    <Row className="justify-content-center">
+      <Col md={7}>
+        <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Condition</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff}/>)}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
   </Container>
 ) : <LoadingSpinner/>);
 
