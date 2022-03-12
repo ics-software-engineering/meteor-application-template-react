@@ -8,10 +8,6 @@
     "core-js": "^3.18.0",
     "graphql": "^14.5.8",
     "meteor-node-stubs": "^1.1.0",
-    "node-sass": "^7.0.1",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.8",
-    "postcss-cli": "^9.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-bootstrap": "^2.2.0",
@@ -26,6 +22,7 @@
     "uniforms-bridge-simple-schema-2": "^3.6.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -35,10 +32,18 @@
     "eslint-plugin-react": "^7.25.3",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-utils": "^2.1.0",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.8",
+    "postcss-cli": "^9.1.0",
     "testcafe": "^1.18.3"
   },
   "scripts": {
-    "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
+    "start": "npm-run-all css start-meteor",
+    "start-meteor": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
+    "css-compile": "node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 scss -o imports/startup/client/css/",
+    "css-prefix": "postcss src/css/theme.css --replace --use autoprefixer --map",
+    "css": "npm-run-all css-compile css-prefix",
     "lint": "eslint --quiet --fix --ext .jsx --ext .js ./imports",
     "testcafe-development": "testcafe chrome tests/*.testcafe.js",
     "testcafe": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
