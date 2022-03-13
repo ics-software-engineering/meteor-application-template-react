@@ -31,6 +31,7 @@ const Signin = ({ location }) => {
 
   // Handle Signin submission using Meteor's account mechanism.
   const submit = () => {
+    console.log('submit', email, password, error, redirectToReferer);
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
         setError(err.reason);
@@ -43,9 +44,11 @@ const Signin = ({ location }) => {
 
   // Render the signin form.
   const { from } = location.state || { from: { pathname: '/' } };
+  console.log('render', email, password, error, redirectToReferer, from);
   // if correct authentication, redirect to page instead of login screen
   if (redirectToReferer) {
-    return <Redirect to={from}/>;
+    console.log('redirect to ', from);
+    return <Redirect to={from} />;
   }
   // Otherwise return the Login form.
   return (
@@ -86,7 +89,6 @@ const Signin = ({ location }) => {
   );
 };
 
-// Ensure that the React Router location object is available in case we need to redirect.
 Signin.propTypes = {
   location: PropTypes.object,
 };
