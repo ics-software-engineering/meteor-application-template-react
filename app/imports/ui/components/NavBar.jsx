@@ -15,11 +15,10 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
   const menuStyle = { marginBottom: '10px' };
-  const whiteColorStyle = { color: 'white' };
   return (
     <Navbar bg="light" expand="lg" style={menuStyle}>
-      <Container style={whiteColorStyle}>
-        <Navbar.Brand as={NavLink} activeClassName="" exact to="/"><h1>meteor-application-template</h1></Navbar.Brand>
+      <Container>
+        <Navbar.Brand as={NavLink} activeClassName="" exact to="/"><h1>meteor-react-boostrap-template</h1></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
