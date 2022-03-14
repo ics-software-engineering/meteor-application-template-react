@@ -6,30 +6,27 @@ import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 
 /**
- * Signup component is similar to signin component, but we create a new user instead.
+ * SignUp component is similar to signin component, but we create a new user instead.
  */
-const Signup = ({ location }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignUp = ({ location }) => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
-  /* Update the form controls each time the user interacts with them. */
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
+  const schema = new SimpleSchema({
+    email: String,
+    password: String,
+  });
+  const bridge = new SimpleSchema2Bridge(schema);
 
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
-  /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
-  const submit = () => {
+  /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
+  const submit = (doc) => {
+    const { email, password } = doc;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         setError(err.reason);
@@ -53,21 +50,16 @@ const Signup = ({ location }) => {
           <Col className="text-center">
             <h2>Register your account</h2>
           </Col>
-          <Form onSubmit={submit}>
+          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <Form.Group className="mb-3">
-                  <Form.Label><strong>Email address</strong></Form.Label>
-                  <Form.Control id="signup-form-email" type="email" placeholder="E-mail address" onChange={handleChangeEmail}/>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label><strong>Password</strong></Form.Label>
-                  <Form.Control id="signup-form-password" type="password" placeholder="Password" onChange={handleChangePassword}/>
-                </Form.Group>
-                <Button id="signin-form-submit" variant="secondary" type="submit">Submit</Button>
+                <TextField name="email" placeholder="E-mail address"/>
+                <TextField name="password" placeholder="Password" type="password"/>
+                <ErrorsField/>
+                <SubmitField/>
               </Card.Body>
             </Card>
-          </Form>
+          </AutoForm>
           <Alert variant="secondary">
             Already have an account? Login <Link to="/signin">here</Link>
           </Alert>
@@ -86,8 +78,8 @@ const Signup = ({ location }) => {
 };
 
 /* Ensure that the React Router location object is available in case we need to redirect. */
-Signup.propTypes = {
+SignUp.propTypes = {
   location: PropTypes.object,
 };
 
-export default Signup;
+export default SignUp;

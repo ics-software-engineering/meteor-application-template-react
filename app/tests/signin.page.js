@@ -17,8 +17,8 @@ class SigninPage {
     await this.isDisplayed(testController);
     await testController.typeText('#signin-form-email', username);
     await testController.typeText('#signin-form-password', password);
-    await testController.click('#signin-form-submit');
-    // await navBar.isLoggedIn(testController, username);
+    await testController.click('#signin-form-submit input.btn.btn-primary');
+    await navBar.isLoggedIn(testController, username);
   }
 }
 
