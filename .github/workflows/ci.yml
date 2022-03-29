@@ -1,4 +1,4 @@
-name: ci-meteor-application-template-react-bootstrap
+name: ci-meteor-react-bootstrap-template
 
 on:
   push:
