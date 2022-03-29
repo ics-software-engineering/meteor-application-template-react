@@ -3,7 +3,7 @@ name: ci-meteor-react-bootstrap-template
 on:
   push:
     branches:
-      - master
+      - main
 
 defaults:
   run:
