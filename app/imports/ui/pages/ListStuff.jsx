@@ -11,7 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListStuff = () => {
-// useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, stuffs } = useTracker(() => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const StuffItem = ({ stuff }) => (
@@ -24,5 +24,4 @@ StuffItem.propTypes = {
   }).isRequired,
 };
 
-// Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(StuffItem);
+export default StuffItem;

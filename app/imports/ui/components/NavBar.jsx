@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Roles } from 'meteor/alanning:roles';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -44,5 +44,4 @@ const NavBar = () => {
   );
 };
 
-// Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter
-export default withRouter(NavBar);
+export default NavBar;
