@@ -6,7 +6,7 @@ import { Roles } from 'meteor/alanning:roles';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import { NavDropdown } from 'react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { BoxArrowRight, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
 
 const NavBar = () => {
@@ -30,7 +30,7 @@ const NavBar = () => {
               <Nav.Link as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Nav.Link>
             ) : ''}
           </Nav>
-          <Nav className="me-auto justify-content-end">
+          <Nav className="justify-content-end">
             {currentUser === '' ? (<NavDropdown id="login-dropdown" title="Login">
               <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} exact to="/signin"><PersonFill/>Sign in</NavDropdown.Item>
               <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} exact to="/signup"><PersonPlusFill/>Sign up</NavDropdown.Item>

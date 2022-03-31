@@ -60,7 +60,8 @@ const AddStuff = () => {
             </Card>
           </AutoForm>
         </Col>
-      </Row></Container>
+      </Row>
+    </Container>
   );
 };
 
