@@ -9,7 +9,7 @@ module.exports = {
   app: {
     // if you edit the app 'name' field, be sure to run 'mup stop' if the app is already running.
     // otherwise you will have two apps deployed at once, with unpredictable results.
-    name: 'meteor-application-template-react',
+    name: 'meteor-react-bootstrap-template',
     path: '../',
     servers: { one: {}, },
     buildOptions: { serverOnly: true },
@@ -21,6 +21,6 @@ module.exports = {
     docker: { image: 'zodern/meteor:latest' },
     enableUploadProgressBar: true
   },
-  mongo: { version: '3.4.1', servers: { one: {} }
+  mongo: { version: '5.0', servers: { one: {} }
   },
 };
