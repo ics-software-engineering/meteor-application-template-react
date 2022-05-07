@@ -5,7 +5,7 @@
     "@babel/runtime": "^7.17.9",
     "bootstrap": "^5.1.3",
     "classnames": "^2.3.1",
-    "core-js": "^3.22.4",
+    "core-js": "^3.22.3",
     "graphql": "^14.5.8",
     "meteor-node-stubs": "^1.2.3",
     "prop-types": "^15.7.2",
@@ -22,7 +22,7 @@
     "uniforms-bridge-simple-schema-2": "^3.9.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "^10.4.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -45,7 +45,8 @@
     "css-prefix": "postcss src/css/theme.css --replace --use autoprefixer --map",
     "css": "npm-run-all css-compile css-prefix",
     "lint": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
-    "testcafe-development": "testcafe chrome tests/*.testcafe.js",
-    "testcafe": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
+    "testcafe": "testcafe chrome tests/*.testcafe.js",
+    "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
+    "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
   }
 }
