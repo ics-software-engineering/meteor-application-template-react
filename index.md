@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-page.png)
 
-Meteor-application-template-react is a sample Meteor 2.7.1 application that illustrates:
+Meteor-application-template-react is a sample Meteor 2.7.1 application that illustrates: 
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
   * [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
