@@ -1,9 +1,9 @@
 ![](https://raw.githubusercontent.com/ics-software-engineering/meteor-application-template-react/master/doc/landing-page.png)
 
-Meteor-application-template-react is a sample Meteor 2.6 application that illustrates:
+Meteor-application-template-react is a sample Meteor 2.7.1 application that illustrates:
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
-  * [Semantic UI React](https://react.semantic-ui.com/) for user interface.
+  * [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
   * [Uniforms](https://uniforms.tools/) for form development.
   * [alanning:roles](https://github.com/alanning/meteor-roles) to implement a special "Admin" user.
   * Authorization, authentication, and registration using built-in Meteor packages.
@@ -15,7 +15,7 @@ The goal of this template is to help you get quickly started doing Meteor develo
 
 To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
 
-  * Testing.
+  * Unit Testing.
   * Security (meteor-application-template-react enables the insecure packages)
 
 Examples of the these capabilities will be provided elsewhere.
@@ -47,43 +47,48 @@ The first time you run the app, it will create some default users and data. Here
 ```
 meteor npm run start
 
-> meteor-application-template-react@ start /Users/philipjohnson/github/ics-software-engineering/meteor-application-template-react/app
-> meteor --no-release-check --settings ../config/settings.development.json
 
-[[[[[ ~/github/ics-software-engineering/meteor-application-template-react/app ]]]]]
+> meteor-react-bootstrap-template@ start /Users/carletonmoore/meteor-react-bootstrap-template/app
+> npm-run-all css start-meteor
 
-=> Started proxy.
-=> Started MongoDB.
-I20180227-13:33:02.716(-10)? Creating the default user(s)
-I20180227-13:33:02.742(-10)?   Creating user admin@foo.com.
-I20180227-13:33:02.743(-10)?   Creating user john@foo.com.
-I20180227-13:33:02.743(-10)? Creating default data.
-I20180227-13:33:02.743(-10)?   Adding: Basket (john@foo.com)
-I20180227-13:33:02.743(-10)?   Adding: Bicycle (john@foo.com)
-I20180227-13:33:02.743(-10)?   Adding: Banana (admin@foo.com)
-I20180227-13:33:02.744(-10)?   Adding: Boogie Board (admin@foo.com)
+
+> meteor-react-bootstrap-template@ css /Users/carletonmoore/meteor-react-bootstrap-template/app
+> npm-run-all css-compile css-prefix
+
+
+> meteor-react-bootstrap-template@ css-compile /Users/carletonmoore/meteor-react-bootstrap-template/app
+> node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 scss -o imports/startup/client/css/
+
+Rendering Complete, saving .css file...
+Wrote CSS to /Users/carletonmoore/meteor-react-bootstrap-template/app/imports/startup/client/css/theme.css
+Wrote Source Map to /Users/carletonmoore/meteor-react-bootstrap-template/app/imports/startup/client/css/theme.css.map
+Wrote 1 CSS files to /Users/carletonmoore/meteor-react-bootstrap-template/app/imports/startup/client/css/
+
+> meteor-react-bootstrap-template@ css-prefix /Users/carletonmoore/meteor-react-bootstrap-template/app
+> postcss imports/startup/client/css/theme.css --replace --use autoprefixer --map
+
+
+> meteor-react-bootstrap-template@ start-meteor /Users/carletonmoore/meteor-react-bootstrap-template/app
+> meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json
+
+[[[[[ ~/meteor-react-bootstrap-template/app ]]]]]
+
+=> Started proxy.                             
+=> Started HMR server.                        
+=> Started MongoDB.                           
+I20220515-09:42:29.808(-10)? Creating the default user(s)
+I20220515-09:42:29.814(-10)?   Creating user admin@foo.com.
+I20220515-09:42:29.880(-10)?   Creating user john@foo.com.
+I20220515-09:42:29.944(-10)? Creating default data.
+I20220515-09:42:29.944(-10)?   Adding: Basket (john@foo.com)
+I20220515-09:42:30.048(-10)?   Adding: Bicycle (john@foo.com)
+I20220515-09:42:30.049(-10)?   Adding: Banana (admin@foo.com)
+I20220515-09:42:30.050(-10)?   Adding: Boogie Board (admin@foo.com)
+I20220515-09:42:30.234(-10)? Monti APM: completed instrumenting the app
 => Started your app.
 
 => App running at: http://localhost:3000/
 ```
-
-
-### Note regarding "bcrypt warning":
-
-You might also get the following message when you run this application:
-
-```
-Note: you are using a pure-JavaScript implementation of bcrypt.
-While this implementation will work correctly, it is known to be
-approximately three times slower than the native implementation.
-In order to use the native implementation instead, run
-
-  meteor npm install --save bcrypt
-
-in the root directory of your application.
-```
-
-On some operating systems (particularly Windows), installing bcrypt is much more difficult than implied by the above message. Bcrypt is only used in Meteor for password checking, so the performance implications are negligible until your site has very high traffic. You can safely ignore this warning without any problems during initial stages of development.
 
 ### Note regarding "MongoError: not master and slaveOk=false":
 
@@ -120,6 +125,7 @@ The following sections describe the major features of this template.
 The top-level directory structure is:
 
 ```
+.github     # holds the GitHub Continuous Integration action and Issue template.
 app/        # holds the Meteor application sources
 config/     # holds configuration files, such as settings.development.json
 doc/        # holds developer documentation, user guides, etc.
@@ -131,6 +137,11 @@ This structure separates documentation files (such as screenshots) and configura
 The app/ directory has this structure:
 
 ```
+.deploy/
+  .gitignore     # don't commit mup.js or settings.json
+  mup.sample.js  # sample mup.js file used for deploying the application
+  settings.sample.json # sample settings file
+  
 client/
   main.html      # The boilerplate HTML with a "root" div to be manipulated by React.
   main.js        # import startup files.
@@ -142,16 +153,21 @@ imports/
     client/
     server/
   ui/
+    components/  # Contains page elements, some of which could appear on multiple pages.
     layouts/     # Contains top-level layout (<App> component).
     pages/       # Contains components for each page.
-    components/  # Contains page elements, some of which could appear on multiple pages.
 
 node_modules/    # managed by npm
 
 public/          # static assets (like images) can go here.
 
+scss/            
+  theme.scss     # Bootstrap 5 theme file.
+  
 server/
    main.js       # import the server-side js files.
+   
+tests/           # testcafe acceptance tests.
 ```
 
 ### Import conventions
@@ -160,7 +176,7 @@ This system adheres to the Meteor guideline of putting all application code in t
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String), a quantity (Number), and a condition (one of 'excellent', 'good', 'fair', or 'poor').
+The application implements a simple CRUD application for managing "Stuff", which is a Mongo Collection consisting of a name (String), a quantity (Number), a condition (one of 'excellent', 'good', 'fair', or 'poor') and an owner.
 
 By default, each user only sees the Stuff that they have created.  However, the settings file enables you to define default accounts.  If you define a user with the role "admin", then that user gets access to a special page which lists all the Stuff defined by all users.
 
@@ -237,7 +253,7 @@ The Stuffs collection is initialized in [imports/startup/server/Mongo.js](https:
 
 ### CSS
 
-The application uses the [React implementation of Semantic UI](http://react.semantic-ui.com/).
+The application uses the [React implementation of Bootstrap 5](https://react-bootstrap.github.io/). You can adjust the theme by editing the `app/scss/theme.scss` file. We rebuild the Bootstrap 5 theme every time we run `meteor npm run start`.
 
 ### Routing
 
