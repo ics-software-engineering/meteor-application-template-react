@@ -42,7 +42,7 @@
     "start": "npm-run-all css start-meteor",
     "start-meteor": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
     "css-compile": "node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 scss -o imports/startup/client/css/",
-    "css-prefix": "postcss src/css/theme.css --replace --use autoprefixer --map",
+    "css-prefix": "postcss imports/startup/client/css/theme.css --replace --use autoprefixer --map",
     "css": "npm-run-all css-compile css-prefix",
     "lint": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "testcafe": "testcafe chrome tests/*.testcafe.js",
