@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <Navbar bg="light" expand="lg" style={menuStyle}>
       <Container>
-        <Navbar.Brand as={NavLink} activeClassName="" exact to="/"><h1>meteor-react-bootstrap-template</h1></Navbar.Brand>
+        <Navbar.Brand as={NavLink} activeClassName="active" exact to="/"><h1>meteor-react-bootstrap-template</h1></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">

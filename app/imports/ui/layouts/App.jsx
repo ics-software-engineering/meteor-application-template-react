@@ -16,30 +16,26 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <NavBar/>
-          <Switch>
-            <Route exact path="/" component={Landing}/>
-            <Route path="/signin" component={SignIn}/>
-            <Route path="/signup" component={SignUp}/>
-            <Route path="/signout" component={SignOut}/>
-            <ProtectedRoute path="/home" component={Landing}/>
-            <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
-            <Route component={NotFound}/>
-          </Switch>
-          <Footer/>
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <NavBar/>
+      <Switch>
+        <Route exact path="/" component={Landing}/>
+        <Route path="/signin" component={SignIn}/>
+        <Route path="/signup" component={SignUp}/>
+        <Route path="/signout" component={SignOut}/>
+        <ProtectedRoute path="/home" component={Landing}/>
+        <ProtectedRoute path="/list" component={ListStuff}/>
+        <ProtectedRoute path="/add" component={AddStuff}/>
+        <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
+        <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+        <Route component={NotFound}/>
+      </Switch>
+      <Footer/>
+    </div>
+  </Router>
+);
 
 /**
  * ProtectedRoute (see React Router v4 sample)
