@@ -287,7 +287,7 @@ It's significantly easier to do development with ESLint integrated directly into
 
 For more information about this system, please watch one or more of the following screencasts. Note that the current source code might differ slightly from the code in these screencasts, but the changes should be very minor.
 
-  * [Walkthrough of system user interface (5 min)](https://www.youtube.com/watch?v=shYgqco1AUs)
+  * [Walkthrough of system user interface (4:30 min)](https://youtu.be/0zThbE1Shkw)
   * [Data and accounts structure and initialization (15 min)](https://www.youtube.com/watch?v=p9dvM6MdCGs)
   * [Navigation, routing, pages, components (23 min)](https://www.youtube.com/watch?v=DAv0UjS0VjQ)
   * [Forms (25 min)](https://www.youtube.com/watch?v=z02076QgDA8)
