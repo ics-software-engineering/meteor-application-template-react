@@ -1,7 +1,8 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2017,
+    "requireConfigFile": false,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -9,7 +10,8 @@
   },
   "plugins": [
     "meteor",
-    "react"
+    "react",
+    "jsx"
   ],
   "settings": {
     "react": {

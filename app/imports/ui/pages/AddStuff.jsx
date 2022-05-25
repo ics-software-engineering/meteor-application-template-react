@@ -27,7 +27,8 @@ const AddStuff = () => {
   const submit = (data, formRef) => {
     const { name, quantity, condition } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert({ name, quantity, condition, owner },
+    Stuffs.collection.insert(
+      { name, quantity, condition, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -35,7 +36,8 @@ const AddStuff = () => {
           swal('Success', 'Item added successfully', 'success');
           formRef.reset();
         }
-      });
+      },
+    );
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
