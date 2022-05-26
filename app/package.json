@@ -1,5 +1,5 @@
 {
-  "name": "meteor-react-bootstrap-template",
+  "name": "meteor-application-template-react",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.18.3",
