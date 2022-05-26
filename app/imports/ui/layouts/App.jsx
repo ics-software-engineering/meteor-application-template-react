@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { BrowserRouter as Router, Route, Switch, Navigate, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Redirect } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
@@ -21,19 +21,19 @@ const App = () => (
   <Router>
     <div>
       <NavBar/>
-      <Switch>
-        <Route exact path="/"><Landing/></Route>
-        <Route path="/signin"><SignIn/></Route>
-        <Route path="/signup"><SignUp/></Route>
-        <Route path="/signout"><SignOut/></Route>
-        <Route path="/home" render={() => <ProtectedRoute><Landing/></ProtectedRoute>}/>
-        <Route path="/list" render={() => <ProtectedRoute><ListStuff/></ProtectedRoute>}/>
-        <Route path="/add" render={() => <ProtectedRoute><AddStuff/></ProtectedRoute>}/>
-        <Route path="/edit/:_id" render={() => <ProtectedRoute><EditStuff/></ProtectedRoute>}/>
-        <Route path="/admin" render={() => <AdminProtectedRoute><ListStuffAdmin/></AdminProtectedRoute>}/>
-        <Route path="/notauthorized"><NotAuthorized/></Route>
-        <Route><NotFound/></Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={Landing}/>
+        <Route path="/signin" element={SignIn}/>
+        <Route path="/signup" element={SignUp}/>
+        <Route path="/signout" element={SignOut}/>
+        <Route path="/home" element={<ProtectedRoute><Landing/></ProtectedRoute>}/>
+        <Route path="/list" element={<ProtectedRoute><ListStuff/></ProtectedRoute>}/>
+        <Route path="/add" element={<ProtectedRoute><AddStuff/></ProtectedRoute>}/>
+        <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff/></ProtectedRoute>}/>
+        <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin/></AdminProtectedRoute>}/>
+        <Route path="/notauthorized" element={NotAuthorized}/>
+        <Route element={NotFound}/>
+      </Routes>
       <Footer/>
     </div>
   </Router>
@@ -57,10 +57,10 @@ const ProtectedRoute = ({ children }) => {
 const AdminProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
-    return <Redirect to='/signin'/>;
+    return <Navigate to='/signin'/>;
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-  return (isLogged && isAdmin) ? children : <Redirect to='/notauthorized'/>;
+  return (isLogged && isAdmin) ? children : <Navigate to='/notauthorized'/>;
 };
 
 // Require a component and location to be passed to each ProtectedRoute.
