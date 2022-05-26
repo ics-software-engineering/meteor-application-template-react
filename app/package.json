@@ -9,7 +9,7 @@
     "graphql": "^16.5.0",
     "meteor-node-stubs": "^1.2.3",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
+    "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-bootstrap-icons": "^1.8.2",
     "react-dom": "^16.14.0",
