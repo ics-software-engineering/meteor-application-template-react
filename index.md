@@ -90,6 +90,8 @@ I20220515-09:42:30.234(-10)? Monti APM: completed instrumenting the app
 => App running at: http://localhost:3000/
 ```
 
+Periodically, you might see `Error starting Mongo (2 tries left): Cannot run replSetReconfig because the node is currently updating its configuration` after the `=> Started HMR server.`. It doesn't seem to be a problem since the MongoDB does start.
+
 ### Viewing the running app
 
 If all goes well, the template application will appear at [http://localhost:3000](http://localhost:3000).  You can login using the credentials in [settings.development.json](https://github.com/cammoore/meteor-react-bootstrap-template/blob/main/config/settings.development.json), or else register a new account.
