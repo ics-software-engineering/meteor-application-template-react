@@ -40,7 +40,7 @@ const App = () => (
 );
 
 /*
- * ProtectedRoute (see React Router v4 sample)
+ * ProtectedRoute (see React Router v6 sample)
  * Checks for Meteor login before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
@@ -50,7 +50,7 @@ const ProtectedRoute = ({ children }) => {
 };
 
 /**
- * AdminProtectedRoute (see React Router v4 sample)
+ * AdminProtectedRoute (see React Router v6 sample)
  * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
