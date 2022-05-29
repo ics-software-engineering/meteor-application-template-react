@@ -1,0 +1,19 @@
+/* Change variable values. */
+body {
+  --bs-dark: #198754;
+  --bs-light: #DF9F33;
+}
+
+/* Define custom styles */
+.gray-background {
+  background-color: var(--bs-gray-200);
+  color: var(--bs-dark);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.light-background {
+  background-color: var(--bs-light);
+}
+.navbar.bg-light {
+  background-color: var(--bs-light)!important;
+}

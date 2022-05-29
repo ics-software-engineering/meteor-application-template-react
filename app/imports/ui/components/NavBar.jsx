@@ -11,12 +11,13 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const menuStyle = { marginBottom: '10px' };
+
   return (
-    <Navbar bg="light" expand="lg" style={menuStyle}>
+    <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand as={NavLink} activeClassName="active" exact to="/"><h1>meteor-application-template-react</h1></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Brand as={NavLink} activeClassName="active" exact to="/"><h1>meteor-application-template-react</h1>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
             {currentUser ? ([
@@ -29,10 +30,13 @@ const NavBar = () => {
           </Nav>
           <Nav className="justify-content-end">
             {currentUser === '' ? (<NavDropdown id="login-dropdown" title="Login">
-              <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} exact to="/signin"><PersonFill/>Sign in</NavDropdown.Item>
-              <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} exact to="/signup"><PersonPlusFill/>Sign up</NavDropdown.Item>
+              <NavDropdown.Item id="login-dropdown-sign-in" as={NavLink} exact to="/signin"><PersonFill />Sign
+                in</NavDropdown.Item>
+              <NavDropdown.Item id="login-dropdown-sign-up" as={NavLink} exact to="/signup"><PersonPlusFill />Sign
+                up</NavDropdown.Item>
             </NavDropdown>) : (<NavDropdown id="navbar-current-user" title={currentUser}>
-              <NavDropdown.Item id="navbar-sign-out" as={NavLink} exact to="/signout"><BoxArrowRight/> Sign out</NavDropdown.Item>
+              <NavDropdown.Item id="navbar-sign-out" as={NavLink} exact to="/signout"><BoxArrowRight /> Sign
+                out</NavDropdown.Item>
             </NavDropdown>)}
           </Nav>
         </Navbar.Collapse>
