@@ -32,7 +32,7 @@ const App = () => (
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff/></ProtectedRoute>}/>
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin/></AdminProtectedRoute>}/>
         <Route path="/notauthorized" element={<NotAuthorized/>}/>
-        <Route element={<NotFound/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </div>
