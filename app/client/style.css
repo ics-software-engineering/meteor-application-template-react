@@ -1,7 +1,9 @@
-/* Change variable values. */
-body {
+/* Change bootstrap variable values.
+ See https://getbootstrap.com/docs/5.2/customize/css-variables/
+ */
+#root {  /* CAM: why do I need to use #root instead of :root? */
   --bs-dark: #198754;
-  --bs-light: #DF9F33;
+  --bs-light-rgb: 223, 159, 51;
 }
 
 /* Define custom styles */
@@ -10,10 +12,4 @@ body {
   color: var(--bs-dark);
   padding-top: 10px;
   padding-bottom: 20px;
-}
-.light-background {
-  background-color: var(--bs-light);
-}
-.navbar.bg-light {
-  background-color: var(--bs-light)!important;
 }
