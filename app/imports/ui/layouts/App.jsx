@@ -19,7 +19,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
   <Router>
-    <div>
+    <div className="d-flex flex-column min-vh-100">
       <NavBar/>
       <Routes>
         <Route exact path="/" element={<Landing/>}/>
