@@ -2,8 +2,8 @@
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 #root {  /* CAM: why do I need to use #root instead of :root? */
-  --bs-dark: #198754;
-  --bs-light-rgb: 223, 159, 51;
+  --bs-dark: #00241B;
+  --bs-light-rgb: 181, 225, 255;
 }
 
 /* Define custom styles */
