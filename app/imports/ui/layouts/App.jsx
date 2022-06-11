@@ -20,21 +20,21 @@ import NotAuthorized from '../pages/NotAuthorized';
 const App = () => (
   <Router>
     <div className="d-flex flex-column min-vh-100">
-      <NavBar/>
+      <NavBar />
       <Routes>
-        <Route exact path="/" element={<Landing/>}/>
-        <Route path="/signin" element={<SignIn/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/signout" element={<SignOut/>}/>
-        <Route path="/home" element={<ProtectedRoute><Landing/></ProtectedRoute>}/>
-        <Route path="/list" element={<ProtectedRoute><ListStuff/></ProtectedRoute>}/>
-        <Route path="/add" element={<ProtectedRoute><AddStuff/></ProtectedRoute>}/>
-        <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff/></ProtectedRoute>}/>
-        <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin/></AdminProtectedRoute>}/>
-        <Route path="/notauthorized" element={<NotAuthorized/>}/>
-        <Route path="*" element={<NotFound/>}/>
+        <Route exact path="/" element={<Landing />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signout" element={<SignOut />} />
+        <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+        <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+        <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+        <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+        <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
+        <Route path="/notauthorized" element={<NotAuthorized />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   </Router>
 );
@@ -46,7 +46,7 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  return isLogged ? children : <Navigate to='/signin'/>;
+  return isLogged ? children : <Navigate to="/signin" />;
 };
 
 /**
@@ -57,10 +57,10 @@ const ProtectedRoute = ({ children }) => {
 const AdminProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
-    return <Navigate to='/signin'/>;
+    return <Navigate to="/signin" />;
   }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
-  return (isLogged && isAdmin) ? children : <Navigate to='/notauthorized'/>;
+  return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
 // Require a component and location to be passed to each ProtectedRoute.
@@ -68,9 +68,17 @@ ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
+ProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+AdminProtectedRoute.defaultProps = {
+  children: <Landing />,
 };
 
 export default App;

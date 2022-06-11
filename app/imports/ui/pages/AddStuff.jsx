@@ -50,11 +50,11 @@ const AddStuff = () => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <Card>
               <Card.Body>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={null}/>
-                <SelectField name='condition'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
+                <TextField name="name" />
+                <NumField name="quantity" decimal={null} />
+                <SelectField name="condition" />
+                <SubmitField value="Submit" />
+                <ErrorsField />
               </Card.Body>
             </Card>
           </AutoForm>

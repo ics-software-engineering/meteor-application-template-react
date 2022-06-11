@@ -37,7 +37,7 @@ const SignUp = ({ location }) => {
   const { from } = location?.state || { from: { pathname: '/add' } };
   // if correct authentication, redirect to from: page instead of signup screen
   if (redirectToReferer) {
-    return <Navigate to={from}/>;
+    return <Navigate to={from} />;
   }
   return (
     <Container id="signup-page">
@@ -49,15 +49,17 @@ const SignUp = ({ location }) => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)}>
             <Card>
               <Card.Body>
-                <TextField name="email" placeholder="E-mail address"/>
-                <TextField name="password" placeholder="Password" type="password"/>
-                <ErrorsField/>
-                <SubmitField/>
+                <TextField name="email" placeholder="E-mail address" />
+                <TextField name="password" placeholder="Password" type="password" />
+                <ErrorsField />
+                <SubmitField />
               </Card.Body>
             </Card>
           </AutoForm>
           <Alert variant="secondary">
-            Already have an account? Login <Link to="/signin">here</Link>
+            Already have an account? Login
+            {' '}
+            <Link to="/signin">here</Link>
           </Alert>
           {error === '' ? (
             ''
@@ -75,7 +77,13 @@ const SignUp = ({ location }) => {
 
 /* Ensure that the React Router location object is available in case we need to redirect. */
 SignUp.propTypes = {
-  location: PropTypes.object,
+  location: PropTypes.shape({
+    state: PropTypes.string,
+  }),
+};
+
+SignUp.defaultProps = {
+  location: { state: '' },
 };
 
 export default SignUp;

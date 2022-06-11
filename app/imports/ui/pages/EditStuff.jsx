@@ -46,19 +46,19 @@ const EditStuff = () => {
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <Card>
               <Card.Body>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={null}/>
-                <SelectField name='condition'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-                <HiddenField name='owner'/>
+                <TextField name="name" />
+                <NumField name="quantity" decimal={null} />
+                <SelectField name="condition" />
+                <SubmitField value="Submit" />
+                <ErrorsField />
+                <HiddenField name="owner" />
               </Card.Body>
             </Card>
           </AutoForm>
         </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner/>;
+  ) : <LoadingSpinner />;
 };
 
 export default EditStuff;

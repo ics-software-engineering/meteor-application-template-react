@@ -40,11 +40,13 @@ const ListStuff = () => {
               </tr>
             </thead>
             <tbody>
-              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff}/>)}
+              {stuffs.map((stuff) => <StuffItem key={stuff._id} stuff={stuff} />)}
             </tbody>
-          </Table></Col>
+          </Table>
+        </Col>
       </Row>
-    </Container>) : <LoadingSpinner/>);
+    </Container>
+  ) : <LoadingSpinner />);
 };
 
 export default ListStuff;
