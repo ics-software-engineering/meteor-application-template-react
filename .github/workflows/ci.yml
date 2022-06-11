@@ -31,7 +31,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm install -g meteor
+      - run: npm install --location=global meteor
 
       - name: Run Meteor commands
         shell: bash -l {0}
