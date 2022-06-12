@@ -38,6 +38,7 @@
   "scripts": {
     "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
     "lint": "eslint --quiet --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
+    "lint-fix": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "testcafe": "testcafe chrome tests/*.testcafe.js",
     "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
     "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\""
