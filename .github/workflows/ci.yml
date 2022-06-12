@@ -31,7 +31,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npm install --location=global meteor
+      - run: curl https://install.meteor.com/ | sh
 
       - name: Run Meteor commands
         shell: bash -l {0}
