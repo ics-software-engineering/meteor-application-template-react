@@ -2,8 +2,6 @@
  See https://getbootstrap.com/docs/5.2/customize/css-variables/
  */
 body {
-  --bs-dark: #00241B;
-  --bs-light-rgb: 181, 225, 255;
   --bs-body-font-size: 20px;
 }
 
