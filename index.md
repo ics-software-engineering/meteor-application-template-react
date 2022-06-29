@@ -217,7 +217,24 @@ The Stuffs collection is initialized in [imports/startup/server/Mongo.js](https:
 
 ### CSS
 
-The application uses the [React implementation of Bootstrap 5](https://react-bootstrap.github.io/). You can adjust the theme by editing the `app/scss/theme.scss` file. We rebuild the Bootstrap 5 theme every time we run `meteor npm run start`.
+The application uses the [React implementation of Bootstrap 5](https://react-bootstrap.github.io/). You can adjust the theme by editing the `app/client/style.css` file. To change the theme override the Bootstrap 5 CSS variables.
+
+```css
+/* Change bootstrap variable values.
+ See https://getbootstrap.com/docs/5.2/customize/css-variables/
+ */
+body {
+  --bs-light-rgb: 236, 236, 236;
+}
+
+/* Define custom styles */
+.gray-background {
+  background-color: var(--bs-gray-200);
+  color: var(--bs-dark);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+```
 
 ### Routing
 
