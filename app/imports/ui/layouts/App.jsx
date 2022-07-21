@@ -15,6 +15,7 @@ import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
+import { ROLE } from '../../api/role/Role';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -46,6 +47,7 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
+  console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
@@ -59,7 +61,8 @@ const AdminProtectedRoute = ({ children }) => {
   if (!isLogged) {
     return <Navigate to="/signin" />;
   }
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+  const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
+  console.log('AdminProtectedRoute', isLogged, isAdmin);
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 

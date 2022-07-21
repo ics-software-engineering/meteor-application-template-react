@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col, Container, Image, Row } from 'react-bootstrap';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => (
-  <Container id="landing-page" fluid style={{ paddingTop: 20, paddingBottom: 20 }}>
+  <Container id={PAGE_IDS.LANDING}>
     <Row className="align-middle text-center">
       <Col xs={4}>
         <Image roundedCircle src="/images/meteor-logo.png" width="150px" />

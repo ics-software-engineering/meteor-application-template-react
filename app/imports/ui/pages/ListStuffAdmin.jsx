@@ -1,28 +1,28 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table } from 'react-bootstrap';
-import { Stuffs } from '../../api/stuff/Stuff';
+import { Stuffs } from '../../api/stuff/StuffCollection';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItemAdmin> to render each row. */
 const ListStuffAdmin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { stuffs, ready } = useTracker(() => {
     // Get access to Stuff documents.
-    const subscription = Meteor.subscribe(Stuffs.adminPublicationName);
+    const subscription = Stuffs.subscribeStuffAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const items = Stuffs.collection.find({}).fetch();
+    const items = Stuffs.find({}).fetch();
     return {
       stuffs: items,
       ready: rdy,
     };
   }, []);
   return (ready ? (
-    <Container>
+    <Container id={PAGE_IDS.LIST_STUFF_ADMIN}>
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
