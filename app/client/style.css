@@ -15,7 +15,7 @@ body {
 }
 
 /* Set the SignIn and SignUp alerts background. */
-#signin-page .alert-light, #signup-page .alert-light {
+#sign-in .alert-light, #sign-up .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
