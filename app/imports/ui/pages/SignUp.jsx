@@ -56,7 +56,7 @@ const SignUp = ({ location }) => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
+          <Alert variant="light">
             Already have an account? Login
             {' '}
             <Link to="/signin">here</Link>
