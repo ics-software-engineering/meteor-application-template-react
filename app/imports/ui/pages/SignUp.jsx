@@ -57,7 +57,9 @@ const SignUp = ({ location }) => {
             </Card>
           </AutoForm>
           <Alert variant="light">
-            Already have an account? <Link to="/signin">Login here</Link>
+            Already have an account? Login
+            {' '}
+            <Link to="/signin">here</Link>
           </Alert>
           {error === '' ? (
             ''
