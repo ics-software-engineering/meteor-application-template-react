@@ -17,9 +17,9 @@
     "react-router-dom": "^6.3.0",
     "simpl-schema": "^1.12.3",
     "sweetalert": "^2.1.2",
-    "uniforms": "^3.10.0",
-    "uniforms-bootstrap5": "^3.10.0",
-    "uniforms-bridge-simple-schema-2": "^3.10.0"
+    "uniforms": "^3.10.1",
+    "uniforms-bootstrap5": "^3.10.1",
+    "uniforms-bridge-simple-schema-2": "^3.10.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
