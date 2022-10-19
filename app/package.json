@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "bootstrap": "^5.2.0",
+    "bootstrap": "^5.2.2",
     "classnames": "^2.3.1",
     "core-js": "^3.24.1",
     "graphql": "^16.5.0",
