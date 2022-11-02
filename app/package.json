@@ -42,6 +42,7 @@
     "testcafe": "testcafe chrome tests/*.testcafe.js",
     "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
     "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\"",
-    "test-all": "meteor reset && meteor npm run lint && meteor npm run testcafe-ci"
+    "test-all": "meteor reset && meteor npm run lint && meteor npm run testcafe-ci",
+    "unimported": "npx unimported"
   }
 }

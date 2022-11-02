@@ -1,0 +1,47 @@
+{
+  "entry": [
+    "client/main.js",
+    "server/main.js"
+  ],
+  "ignoreUnresolved": [
+    "meteor/accounts-base",
+    "meteor/alanning:roles",
+    "meteor/check",
+    "meteor/didericis:callpromise-mixin",
+    "meteor/mdg:validated-method",
+    "meteor/meteor",
+    "meteor/mongo",
+    "meteor/react-meteor-data",
+    "meteor/tracker",
+    "meteor/underscore"
+  ],
+  "ignoreUnused": [
+    "@babel/runtime",
+    "classnames",
+    "core-js",
+    "graphql",
+    "meteor-node-stubs",
+    "uniforms"
+  ],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/typings/**",
+    "**/*.stories.{js,jsx,ts,tsx}",
+    "**/*.tests.{js,jsx,ts,tsx}",
+    "**/*.test.{js,jsx,ts,tsx}",
+    "**/*.app-test.{js,jsx,ts,tsx}",
+    "**/*.spec.{js,jsx,ts,tsx}",
+    "**/tests/**",
+    "**/__tests__/**",
+    "**/*.d.ts",
+    "**/Sample*.ts",
+    "packages/**",
+    "public/**",
+    "private/**",
+    "tests/**"
+  ],
+  "ignoreUnimported": [
+    "imports/api/base/BaseUtilities.js",
+    "imports/test-utilities/test-utilities.js"
+  ]
+}
