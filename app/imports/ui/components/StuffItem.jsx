@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const StuffItem = ({ stuff }) => (
@@ -10,7 +9,7 @@ const StuffItem = ({ stuff }) => (
     <td>{stuff.quantity}</td>
     <td>{stuff.condition}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/edit/${stuff._id}`}>Edit</Link>
+      <Link to={`/edit/${stuff._id}`}>Edit</Link>
     </td>
   </tr>
 );

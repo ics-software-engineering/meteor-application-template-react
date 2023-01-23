@@ -1,6 +1,6 @@
 ![](https://github.com/ics-software-engineering/meteor-application-template-react/raw/main/doc/landing-page.png)
 
-meteor-application-template-react is a sample Meteor 2.7.1 application that illustrates: 
+meteor-application-template-react is a sample Meteor 2.9 application that illustrates: 
 
   * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
   * [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
@@ -17,6 +17,7 @@ To keep this codebase simple and small, some important capabilities are intentio
 
   * Unit Testing.
   * Security (meteor-application-template-react enables the insecure packages)
+  * Deployment
 
 Examples of the these capabilities will be provided elsewhere.
 
@@ -282,8 +283,8 @@ It's significantly easier to do development with ESLint integrated directly into
 
 For more information about this system, please watch one or more of the following screencasts. Note that the current source code might differ slightly from the code in these screencasts, but the changes should be very minor.
 
-  * [Walkthrough of system user interface (4:30 min)](https://youtu.be/0zThbE1Shkw)
-  * [Data and accounts structure and initialization (15 min)](https://www.youtube.com/watch?v=p9dvM6MdCGs)
-  * [Navigation, routing, pages, components (23 min)](https://www.youtube.com/watch?v=DAv0UjS0VjQ)
-  * [Forms (25 min)](https://www.youtube.com/watch?v=z02076QgDA8)
-  * [Authorization, authentication, and roles (10 min)](https://www.youtube.com/watch?v=_i1dgcP0zoI)
+  * [Walkthrough of system user interface (6 min)](https://youtu.be/48xu1hrqUi8)
+  * [Data and accounts structure and initialization (18 min)](https://youtu.be/HZRjwrVBWp4)
+  * [Navigation, routing, pages, components (34 min)](https://youtu.be/XztTdHpv6Jw)
+  * [Forms (32 min)](https://youtu.be/8FyWR3gUGCM)
+  * [Authorization, authentication, and roles (12 min)](https://youtu.be/9HX5vuXTlvA)

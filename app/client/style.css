@@ -14,8 +14,8 @@ body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
 
-/* Set the SignIn and SignUp alerts background. */
-#sign-in .alert-light, #sign-up .alert-light {
+/* Set the alert background on the signin and signup pages. */
+#signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
 }
 
