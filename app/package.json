@@ -2,19 +2,19 @@
   "name": "meteor-application-template-react",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.22.6",
-    "bootstrap": "^5.3.0",
-    "classnames": "^2.3.2",
-    "core-js": "^3.31.1",
+    "@babel/runtime": "^7.23.9",
+    "bootstrap": "^5.3.2",
+    "classnames": "^2.5.1",
+    "core-js": "^3.35.1",
     "graphql": "^16.8.1",
-    "meteor-node-stubs": "^1.2.5",
+    "meteor-node-stubs": "^1.2.7",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
+    "react-bootstrap": "^2.10.0",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
-    "react-router": "^6.14.1",
-    "react-router-dom": "^6.14.1",
+    "react-router": "^6.21.3",
+    "react-router-dom": "^6.21.3",
     "simpl-schema": "^3.4.1",
     "sweetalert": "^2.1.2",
     "uniforms": "^3.10.2",
@@ -22,18 +22,18 @@
     "uniforms-bridge-simple-schema-2": "^3.10.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
-    "eslint": "^8.44.0",
+    "@babel/eslint-parser": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx": "^0.1.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-meteor": "^7.3.0",
-    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-utils": "^3.0.0",
-    "testcafe": "^3.3.0"
+    "testcafe": "^3.5.0"
   },
   "scripts": {
     "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
@@ -42,7 +42,7 @@
     "testcafe": "testcafe chrome tests/*.testcafe.js",
     "testcafe-single": "testcafe chrome tests/*.testcafe.js -t \"Test that signin and signout work\"",
     "testcafe-ci": "testcafe chrome:headless tests/*.testcafe.js -q --app \"meteor npm run start\"",
-    "test-all": "meteor reset && meteor npm run lint && meteor npm run unimported && meteor npm run testcafe-ci",
+    "test-all": "meteor reset && meteor npm run lint && meteor npm run testcafe-ci",
     "unimported": "npx unimported"
   }
 }

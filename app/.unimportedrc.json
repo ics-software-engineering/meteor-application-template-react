@@ -5,13 +5,50 @@
   ],
   "ignoreUnresolved": [
     "meteor/accounts-base",
+    [
+      "meteor/accounts-base",
+      [
+        "imports/startup/server/Accounts.js"
+      ]
+    ],
     "meteor/alanning:roles",
+    [
+      "meteor/alanning:roles",
+      [
+        "imports/startup/server/Accounts.js",
+        "imports/startup/server/Publications.js"
+      ]
+    ],
     "meteor/check",
     "meteor/didericis:callpromise-mixin",
     "meteor/mdg:validated-method",
     "meteor/meteor",
+    [
+      "meteor/meteor",
+      [
+        "imports/startup/server/Accounts.js",
+        "imports/startup/server/Publications.js",
+        "imports/startup/server/Mongo.js"
+      ]
+    ],
     "meteor/mongo",
+    [
+      "meteor/mongo",
+      [
+        "imports/api/stuff/Stuff.js"
+      ]
+    ],
     "meteor/react-meteor-data",
+    [
+      "meteor/react-meteor-data",
+      [
+        "imports/ui/layouts/App.jsx",
+        "imports/ui/pages/ListStuff.jsx",
+        "imports/ui/pages/ListStuffAdmin.jsx",
+        "imports/ui/pages/EditStuff.jsx",
+        "imports/ui/components/NavBar.jsx"
+      ]
+    ],
     "meteor/tracker",
     "meteor/underscore"
   ],
@@ -40,8 +77,5 @@
     "private/**",
     "tests/**"
   ],
-  "ignoreUnimported": [
-    "imports/api/base/BaseUtilities.js",
-    "imports/test-utilities/test-utilities.js"
-  ]
+  "ignoreUnimported": []
 }
